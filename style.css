@@ -1,0 +1,152 @@
+/* style.css: Responsive Tic Tac Toe styling (no Tailwind)
+   Adjust as needed for your design preference. */
+
+body {
+  background: #f1f5f9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin: auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.score-turn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.label {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+.turn {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.score {
+  text-align: right;
+}
+.score-value {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.cell {
+  background: #f1f5f9;
+  border-radius: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.2s;
+}
+.cell:hover {
+  background: #e2e8f0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+.btn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary {
+  background: #0ea5e9;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #0369a1;
+}
+.btn-secondary {
+  background: #fbbf24;
+  color: #334155;
+}
+.btn-secondary:hover {
+  background: #f59e0b;
+}
+.btn-install {
+  background: #fff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+}
+.btn-install:hover {
+  background: #f1f5f9;
+}
+.install {
+  text-align: center;
+  margin-top: 18px;
+}
+.status {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #64748b;
+}
+footer {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #94a3b8;
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 12px;
+  }
+  header h1 {
+    font-size: 1.3rem;
+  }
+  .score-value,
+  .turn {
+    font-size: 1rem;
+  }
+  .cell {
+    font-size: 1.3rem;
+  }
+}
