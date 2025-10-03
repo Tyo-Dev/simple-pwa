@@ -18,6 +18,15 @@
         aspect-ratio: 1 / 1;
       }
     </style>
+    <script>
+      if ('serviceWorker' in navigator) {
+       navigator.serviceWorker.register('./sw.js').then(function(reg) {
+          console.log('Service Worker registered with scope:', reg.scope);
+        }).catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+      }
+    </script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
