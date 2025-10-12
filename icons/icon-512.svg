@@ -1,0 +1,41 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #0a0a0a; }
+      .border { fill: #00ff41; }
+      .grid { stroke: #00ff41; stroke-width: 12.8; fill: none; }
+      .x { stroke: #00ff41; stroke-width: 17.066666666666666; fill: none; }
+      .o { stroke: #ff3d00; stroke-width: 17.066666666666666; fill: none; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" class="bg"/>
+  
+  <!-- Border -->
+  <rect x="0" y="0" width="512" height="25.6" class="border"/>
+  <rect x="0" y="0" width="25.6" height="512" class="border"/>
+  <rect x="486.4" y="0" width="25.6" height="512" class="border"/>
+  <rect x="0" y="486.4" width="512" height="25.6" class="border"/>
+  
+  <!-- Grid -->
+  <g class="grid">
+    <line x1="204.8" y1="102.4" x2="204.8" y2="409.6"/><line x1="307.20000000000005" y1="102.4" x2="307.20000000000005" y2="409.6"/>
+    <line x1="102.4" y1="204.8" x2="409.6" y2="204.8"/><line x1="102.4" y1="307.20000000000005" x2="409.6" y2="307.20000000000005"/>
+  </g>
+  
+  <!-- X in top-left -->
+  <g class="x">
+    <line x1="122.88" y1="122.88" x2="184.32" y2="184.32"/>
+    <line x1="184.32" y1="122.88" x2="122.88" y2="184.32"/>
+  </g>
+  
+  <!-- O in center -->
+  <circle cx="256" cy="256" r="30.72" class="o"/>
+  
+  <!-- X in bottom-right -->
+  <g class="x">
+    <line x1="327.68" y1="327.68" x2="389.12" y2="389.12"/>
+    <line x1="389.12" y1="327.68" x2="327.68" y2="389.12"/>
+  </g>
+</svg>
