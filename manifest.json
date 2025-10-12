@@ -1,12 +1,58 @@
 {
-"name": "Tic Tac Toe (Sederhana)",
-"short_name": "TicTacToe",
-"start_url": ".",
-"display": "standalone",
-"background_color": "#f8fafc",
-"theme_color": "#0284c7",
-"icons": [
-{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-{ "src": "icons/icon.png", "sizes": "512x512", "type": "image/png" }
-]
+  "name": "Pixel Tic Tac Toe - 8-Bit Game PWA",
+  "short_name": "PixelTTT",
+  "description": "Retro pixel-style Tic Tac Toe game with full offline support and animations",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff41",
+  "categories": ["games", "entertainment"],
+  "lang": "id",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Pixel Tic Tac Toe gameplay"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Game",
+      "short_name": "Play",
+      "description": "Start a new game instantly",
+      "url": "./",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "navigate-new"]
+  }
 }
