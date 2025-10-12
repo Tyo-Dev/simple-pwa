@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Icon Generator untuk Pixel Tic Tac Toe</title>
+    <style>
+      body {
+        font-family: monospace;
+        background: #0a0a0a;
+        color: #00ff41;
+        padding: 20px;
+      }
+      canvas {
+        border: 2px solid #00ff41;
+        margin: 10px;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+      }
+      button {
+        background: #00ff41;
+        color: #0a0a0a;
+        border: none;
+        padding: 10px 20px;
+        font-family: monospace;
+        cursor: pointer;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎮 Pixel TTT Icon Generator</h1>
+    <p>Generate icons untuk PWA. Klik tombol untuk download.</p>
+
+    <canvas id="icon192" width="192" height="192"></canvas>
+    <canvas id="icon512" width="512" height="512"></canvas>
+
+    <br />
+    <button onclick="downloadIcon('icon192', '192')">Download 192x192</button>
+    <button onclick="downloadIcon('icon512', '512')">Download 512x512</button>
+
+    <script>
+      function createIcon(canvasId, size) {
+        const canvas = document.getElementById(canvasId);
+        const ctx = canvas.getContext("2d");
+
+        // Background
+        ctx.fillStyle = "#0a0a0a";
+        ctx.fillRect(0, 0, size, size);
+
+        // Border
+        ctx.fillStyle = "#00ff41";
+        ctx.fillRect(0, 0, size, size / 20); // top
+        ctx.fillRect(0, 0, size / 20, size); // left
+        ctx.fillRect(size - size / 20, 0, size / 20, size); // right
+        ctx.fillRect(0, size - size / 20, size, size / 20); // bottom
+
+        // Grid lines
+        const gridSize = size * 0.6;
+        const gridStart = size * 0.2;
+        const cellSize = gridSize / 3;
+
+        ctx.strokeStyle = "#00ff41";
+        ctx.lineWidth = size / 40;
+
+        // Vertical lines
+        for (let i = 1; i < 3; i++) {
+          ctx.beginPath();
+          ctx.moveTo(gridStart + i * cellSize, gridStart);
+          ctx.lineTo(gridStart + i * cellSize, gridStart + gridSize);
+          ctx.stroke();
+        }
+
+        // Horizontal lines
+        for (let i = 1; i < 3; i++) {
+          ctx.beginPath();
+          ctx.moveTo(gridStart, gridStart + i * cellSize);
+          ctx.lineTo(gridStart + gridSize, gridStart + i * cellSize);
+          ctx.stroke();
+        }
+
+        // Draw X and O
+        const symbolSize = cellSize * 0.6;
+        const symbolOffset = cellSize * 0.2;
+
+        // X in top-left
+        ctx.strokeStyle = "#00ff41";
+        ctx.lineWidth = size / 30;
+        ctx.beginPath();
+        ctx.moveTo(gridStart + symbolOffset, gridStart + symbolOffset);
+        ctx.lineTo(
+          gridStart + symbolOffset + symbolSize,
+          gridStart + symbolOffset + symbolSize
+        );
+        ctx.moveTo(
+          gridStart + symbolOffset + symbolSize,
+          gridStart + symbolOffset
+        );
+        ctx.lineTo(
+          gridStart + symbolOffset,
+          gridStart + symbolOffset + symbolSize
+        );
+        ctx.stroke();
+
+        // O in center
+        ctx.strokeStyle = "#ff3d00";
+        ctx.lineWidth = size / 30;
+        ctx.beginPath();
+        ctx.arc(
+          gridStart + cellSize + cellSize / 2,
+          gridStart + cellSize + cellSize / 2,
+          symbolSize / 2,
+          0,
+          2 * Math.PI
+        );
+        ctx.stroke();
+
+        // X in bottom-right
+        ctx.strokeStyle = "#00ff41";
+        ctx.lineWidth = size / 30;
+        ctx.beginPath();
+        ctx.moveTo(
+          gridStart + 2 * cellSize + symbolOffset,
+          gridStart + 2 * cellSize + symbolOffset
+        );
+        ctx.lineTo(
+          gridStart + 2 * cellSize + symbolOffset + symbolSize,
+          gridStart + 2 * cellSize + symbolOffset + symbolSize
+        );
+        ctx.moveTo(
+          gridStart + 2 * cellSize + symbolOffset + symbolSize,
+          gridStart + 2 * cellSize + symbolOffset
+        );
+        ctx.lineTo(
+          gridStart + 2 * cellSize + symbolOffset,
+          gridStart + 2 * cellSize + symbolOffset + symbolSize
+        );
+        ctx.stroke();
+      }
+
+      function downloadIcon(canvasId, size) {
+        const canvas = document.getElementById(canvasId);
+        const link = document.createElement("a");
+        link.download = `icon-${size}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      }
+
+      // Generate icons on load
+      createIcon("icon192", 192);
+      createIcon("icon512", 512);
+    </script>
+  </body>
+</html>
