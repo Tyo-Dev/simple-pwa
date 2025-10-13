@@ -632,15 +632,34 @@ body {
 }
 
 .pixel-btn-primary {
-  background: var(--pixel-primary);
-  color: var(--pixel-bg-dark);
+  background: linear-gradient(
+    135deg,
+    var(--pixel-primary) 0%,
+    var(--pixel-secondary) 100%
+  );
+  color: white;
   border-color: var(--pixel-primary);
+  animation: buttonGlow 3s ease-in-out infinite alternate;
 }
 
 .pixel-btn-primary:hover {
-  background: var(--pixel-bg-dark);
-  color: var(--pixel-primary);
-  box-shadow: inset 0 0 20px var(--pixel-shadow);
+  background: linear-gradient(
+    135deg,
+    var(--pixel-secondary) 0%,
+    var(--pixel-accent) 100%
+  );
+  color: var(--pixel-bg-dark);
+  transform: translateY(-4px) scale(1.05) rotate(1deg);
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+}
+
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(78, 205, 196, 0.4);
+  }
 }
 
 .pixel-btn-secondary {
