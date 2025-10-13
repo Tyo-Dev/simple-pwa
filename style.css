@@ -622,8 +622,8 @@ body {
 }
 
 .pixel-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
 }
 
 .pixel-btn:active {
