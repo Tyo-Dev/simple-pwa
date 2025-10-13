@@ -10,17 +10,21 @@
   font-display: swap;
 }
 
-/* CSS Variables untuk tema pixel */
+/* CSS Variables untuk tema pixel yang lebih ceria */
 :root {
-  --pixel-primary: #00ff41;
-  --pixel-secondary: #ff3d00;
-  --pixel-bg-dark: #0a0a0a;
-  --pixel-bg-light: #1a1a1a;
-  --pixel-border: #333;
-  --pixel-text: #00ff41;
+  --pixel-primary: #ff6b9d;
+  --pixel-secondary: #4ecdc4;
+  --pixel-accent: #ffe66d;
+  --pixel-accent2: #95e1d3;
+  --pixel-bg-dark: #1a0d2e;
+  --pixel-bg-light: #16213e;
+  --pixel-bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --pixel-border: #ff6b9d;
+  --pixel-text: #ffe66d;
   --pixel-text-alt: #ffffff;
-  --pixel-shadow: rgba(0, 255, 65, 0.3);
-  --pixel-glow: 0 0 10px var(--pixel-shadow);
+  --pixel-shadow: rgba(255, 107, 157, 0.4);
+  --pixel-glow: 0 0 15px var(--pixel-shadow);
+  --pixel-rainbow: linear-gradient(45deg, #ff6b9d, #4ecdc4, #ffe66d, #95e1d3);
 
   /* Font stack dengan fallback */
   --pixel-font: "Press Start 2P", "PixelFallback", "Courier New", "Monaco",
@@ -40,11 +44,9 @@
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    var(--pixel-bg-dark) 0%,
-    var(--pixel-bg-light) 100%
-  );
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -56,6 +58,18 @@ body {
   color: var(--pixel-text);
   overflow-x: hidden;
   position: relative;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Background particles */
@@ -71,28 +85,41 @@ body {
 
 .pixel-particle {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: var(--pixel-primary);
-  animation: pixelFloat 3s infinite ease-in-out;
-  opacity: 0.3;
+  width: 6px;
+  height: 6px;
+  background: var(--pixel-rainbow);
+  border-radius: 50%;
+  animation: pixelFloat 4s infinite ease-in-out,
+    colorPulse 2s infinite ease-in-out;
+  opacity: 0.4;
+  box-shadow: 0 0 10px currentColor;
 }
 
 @keyframes pixelFloat {
   0%,
   100% {
-    transform: translateY(100vh) rotate(0deg);
+    transform: translateY(100vh) rotate(0deg) scale(0.5);
     opacity: 0;
   }
   10% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
   90% {
-    opacity: 0.3;
+    opacity: 0.4;
   }
   50% {
-    transform: translateY(-10px) rotate(180deg);
-    opacity: 0.6;
+    transform: translateY(-10px) rotate(180deg) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes colorPulse {
+  0%,
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1.3);
   }
 }
 
@@ -100,23 +127,41 @@ body {
 .container {
   max-width: min(90vw, 500px);
   width: 100%;
-  background: var(--pixel-bg-light);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(20px);
   border: 3px solid var(--pixel-border);
-  border-radius: 0; /* Pixel style - no rounded corners */
-  box-shadow: var(--pixel-glow), inset 0 0 20px rgba(0, 255, 65, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   padding: clamp(15px, 4vw, 30px);
   margin: auto;
   position: relative;
-  animation: containerGlow 2s ease-in-out infinite alternate;
+  animation: containerGlow 3s ease-in-out infinite alternate,
+    containerFloat 6s ease-in-out infinite;
 }
 
 @keyframes containerGlow {
   0% {
-    box-shadow: var(--pixel-glow), inset 0 0 20px rgba(0, 255, 65, 0.1);
+    box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   100% {
-    box-shadow: 0 0 20px var(--pixel-shadow),
-      inset 0 0 30px rgba(0, 255, 65, 0.2);
+    box-shadow: 0 8px 40px rgba(78, 205, 196, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes containerFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.5deg);
   }
 }
 
@@ -140,28 +185,74 @@ body {
 
 .game-title {
   font-size: clamp(12px, 4vw, 20px);
-  color: var(--pixel-primary);
-  text-shadow: 2px 2px 0 var(--pixel-bg-dark);
+  background: var(--pixel-rainbow);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
   margin-bottom: 10px;
   letter-spacing: 2px;
-  animation: titleGlow 3s ease-in-out infinite alternate;
+  animation: titleGlow 3s ease-in-out infinite alternate,
+    rainbowText 4s linear infinite;
+  position: relative;
+}
+
+.game-title::before {
+  content: "PIXEL TIC TAC TOE";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--pixel-rainbow);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(2px);
+  z-index: -1;
+  opacity: 0.7;
 }
 
 @keyframes titleGlow {
   0% {
-    text-shadow: 2px 2px 0 var(--pixel-bg-dark);
+    filter: brightness(1) saturate(1);
+    transform: scale(1);
   }
   100% {
-    text-shadow: 2px 2px 0 var(--pixel-bg-dark), 0 0 10px var(--pixel-primary);
+    filter: brightness(1.2) saturate(1.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes rainbowText {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
   }
 }
 
 .pixel-divider {
   width: 80%;
-  height: 2px;
-  background: var(--pixel-primary);
+  height: 4px;
+  background: var(--pixel-rainbow);
+  background-size: 200% auto;
   margin: 10px auto;
-  animation: dividerExpand 1s ease-out 0.3s both;
+  border-radius: 2px;
+  animation: dividerExpand 1s ease-out 0.3s both,
+    dividerShimmer 2s linear infinite;
+  box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+}
+
+@keyframes dividerShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes dividerExpand {
@@ -187,9 +278,26 @@ body {
   align-items: center;
   margin-bottom: clamp(15px, 4vw, 25px);
   padding: clamp(8px, 2vw, 15px);
-  background: var(--pixel-bg-dark);
-  border: 2px solid var(--pixel-border);
-  animation: statsSlide 0.8s ease-out 0.2s both;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 157, 0.2) 0%,
+    rgba(78, 205, 196, 0.2) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--pixel-secondary);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  animation: statsSlide 0.8s ease-out 0.2s both,
+    statsGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes statsGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(255, 230, 109, 0.4);
+  }
 }
 
 @keyframes statsSlide {
@@ -212,8 +320,13 @@ body {
 
 .turn-value {
   font-size: clamp(10px, 3vw, 16px);
-  color: var(--pixel-primary);
-  text-shadow: 0 0 5px var(--pixel-primary);
+  background: var(--pixel-rainbow);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rainbowText 2s linear infinite;
+  text-shadow: none;
   transition: all 0.3s ease;
 }
 
@@ -274,9 +387,29 @@ body {
   gap: clamp(8px, 2vw, 12px);
   margin-bottom: clamp(15px, 4vw, 25px);
   padding: clamp(10px, 3vw, 20px);
-  background: var(--pixel-bg-dark);
-  border: 3px solid var(--pixel-border);
-  animation: boardRise 1s ease-out 0.4s both;
+  background: linear-gradient(
+    145deg,
+    rgba(149, 225, 211, 0.1) 0%,
+    rgba(255, 107, 157, 0.1) 100%
+  );
+  backdrop-filter: blur(15px);
+  border: 3px solid var(--pixel-accent2);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(149, 225, 211, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: boardRise 1s ease-out 0.4s both, boardPulse 4s ease-in-out infinite;
+}
+
+@keyframes boardPulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(149, 225, 211, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(255, 230, 109, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
 }
 
 @keyframes boardRise {
@@ -291,8 +424,14 @@ body {
 }
 
 .game-cell {
-  background: var(--pixel-bg-light);
-  border: 2px solid var(--pixel-border);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--pixel-accent);
+  border-radius: 15px;
   font-size: clamp(16px, 6vw, 32px);
   font-family: var(--pixel-font);
   color: var(--pixel-text);
@@ -301,10 +440,12 @@ body {
   justify-content: center;
   aspect-ratio: 1 / 1;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   min-height: clamp(60px, 15vw, 100px);
   animation: cellAppear 0.5s ease-out both;
+  box-shadow: 0 4px 15px rgba(255, 230, 109, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 @keyframes cellAppear {
@@ -319,10 +460,12 @@ body {
 }
 
 .game-cell:hover {
-  background: var(--pixel-border);
+  background: linear-gradient(145deg, rgba(255, 107, 157, 0.2) 0%, rgba(78, 205, 196, 0.2) 100%);
   border-color: var(--pixel-primary);
-  box-shadow: inset 0 0 10px var(--pixel-shadow);
-  transform: scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(255, 107, 157, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.05) rotate(1deg);
 }
 
 .game-cell:active {
@@ -350,15 +493,30 @@ body {
 }
 
 .cell-x {
-  color: var(--pixel-primary);
-  text-shadow: 0 0 10px var(--pixel-primary);
-  animation: cellFillX 0.5s ease-out;
+  background: linear-gradient(45deg, #ff6b9d, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px #ff6b9d);
+  animation: cellFillX 0.5s ease-out, textGlow 2s ease-in-out infinite alternate;
 }
 
 .cell-o {
-  color: var(--pixel-secondary);
-  text-shadow: 0 0 10px var(--pixel-secondary);
-  animation: cellFillO 0.5s ease-out;
+  background: linear-gradient(45deg, #ffe66d, #95e1d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px #4ecdc4);
+  animation: cellFillO 0.5s ease-out, textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    filter: drop-shadow(0 0 5px currentColor) brightness(1);
+  }
+  100% {
+    filter: drop-shadow(0 0 15px currentColor) brightness(1.3);
+  }
 }
 
 @keyframes cellFillX {
