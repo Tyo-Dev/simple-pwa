@@ -330,7 +330,7 @@ MIT License - Free untuk personal dan commercial use
 
 ## 👨‍💻 Author
 
-Dibuat dengan ❤️ untuk retro gaming enthusiasts
+hallo kita sedang mengusahakan kacang itu 
 
 ---
 
