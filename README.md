@@ -330,8 +330,8 @@ MIT License - Free untuk personal dan commercial use
 
 ## 👨‍💻 Author
 
-hallo kita sedang mengusahakan kacang itu 
-
+hallo kita usahakan kacang ituu.. 
+dari jauh tampak menakjubkan 
 ---
 
 **Nikmati pengalaman gaming retro dengan teknologi modern! 🎮**
