@@ -80,13 +80,15 @@
 
         <div class="install-section">
           <button id="installBtn" class="pixel-btn pixel-btn-install hidden">
-            <span class="btn-text">📱 INSTALL PWA</span>
+            <span class="btn-text">🎊 INSTALL PWA 🎊</span>
           </button>
         </div>
       </main>
 
       <footer class="game-footer">
-        <div class="footer-text">MADE WITH ❤️ • PIXEL STYLE • FULL OFFLINE</div>
+        <div class="footer-text">
+          MADE WITH 💖 • 🌈 COLORFUL STYLE • ⚡ FULL OFFLINE 🎮
+        </div>
       </footer>
     </div>
 
@@ -328,15 +330,50 @@
         installBtn.classList.add("hidden");
       });
 
-      // Tambahkan particles background
+      // Tambahkan particles background yang ceria
       function createParticles() {
         const pixelBg = document.querySelector(".pixel-bg");
-        for (let i = 0; i < 20; i++) {
+        const colors = [
+          "#ff6b9d",
+          "#4ecdc4",
+          "#ffe66d",
+          "#95e1d3",
+          "#a8e6cf",
+          "#ffd93d",
+          "#6c5ce7",
+        ];
+        const shapes = [
+          "🌟",
+          "✨",
+          "🎈",
+          "🎊",
+          "🌈",
+          "💫",
+          "🎭",
+          "🎪",
+          "🎨",
+          "🎯",
+        ];
+
+        for (let i = 0; i < 30; i++) {
           const particle = document.createElement("div");
-          particle.className = "pixel-particle";
+
+          if (Math.random() > 0.5) {
+            // Partikel emoji
+            particle.innerHTML =
+              shapes[Math.floor(Math.random() * shapes.length)];
+            particle.className = "pixel-particle emoji-particle";
+            particle.style.fontSize = 8 + Math.random() * 8 + "px";
+          } else {
+            // Partikel warna
+            particle.className = "pixel-particle";
+            particle.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+          }
+
           particle.style.left = Math.random() * 100 + "%";
-          particle.style.animationDelay = Math.random() * 3 + "s";
-          particle.style.animationDuration = 3 + Math.random() * 2 + "s";
+          particle.style.animationDelay = Math.random() * 4 + "s";
+          particle.style.animationDuration = 4 + Math.random() * 3 + "s";
           pixelBg.appendChild(particle);
         }
       }
