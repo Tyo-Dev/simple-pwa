@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎨 Preview - Colorful PWA Showcase 🌈</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .preview-container {
+        max-width: min(95vw, 800px);
+        width: 100%;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        backdrop-filter: blur(20px);
+        border: 3px solid var(--pixel-border);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        padding: clamp(20px, 5vw, 40px);
+        margin: auto;
+        animation: containerGlow 3s ease-in-out infinite alternate;
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .showcase-item {
+        background: linear-gradient(
+          145deg,
+          rgba(149, 225, 211, 0.1) 0%,
+          rgba(255, 107, 157, 0.1) 100%
+        );
+        backdrop-filter: blur(15px);
+        border: 2px solid var(--pixel-accent2);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .showcase-item:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+      }
+
+      .demo-button {
+        background: linear-gradient(
+          45deg,
+          var(--pixel-primary),
+          var(--pixel-secondary)
+        );
+        color: white;
+        border: 2px solid var(--pixel-primary);
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-family: var(--pixel-font);
+        font-size: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 10px 5px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .demo-button:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+      }
+
+      .color-demo {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 15px 0;
+      }
+
+      .color-box {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid white;
+        animation: colorPulse 2s ease-in-out infinite alternate;
+      }
+
+      .navigation-links {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+
+      .nav-link {
+        background: linear-gradient(
+          45deg,
+          var(--pixel-accent),
+          var(--pixel-accent2)
+        );
+        color: var(--pixel-bg-dark);
+        border: 2px solid var(--pixel-accent);
+        border-radius: 25px;
+        padding: 12px 24px;
+        font-family: var(--pixel-font);
+        font-size: 8px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .nav-link:hover {
+        transform: translateY(-3px) rotate(1deg);
+        box-shadow: 0 8px 25px rgba(255, 230, 109, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pixel-bg"></div>
+
+    <div class="preview-container">
+      <header class="game-header">
+        <h1 class="game-title">🎨 COLORFUL PWA SHOWCASE ✨</h1>
+        <div class="pixel-divider"></div>
+        <p class="subtitle">
+          🌈 MODERN DESIGN • ⚡ SMOOTH ANIMATIONS • 🎮 INTERACTIVE
+        </p>
+      </header>
+
+      <div class="showcase-grid">
+        <div class="showcase-item">
+          <h3 style="color: var(--pixel-text); margin-bottom: 15px">
+            🎨 Color Palette
+          </h3>
+          <div class="color-demo">
+            <div class="color-box" style="background: #ff6b9d"></div>
+            <div class="color-box" style="background: #4ecdc4"></div>
+            <div class="color-box" style="background: #ffe66d"></div>
+            <div class="color-box" style="background: #95e1d3"></div>
+            <div class="color-box" style="background: #f093fb"></div>
+          </div>
+          <p style="color: var(--pixel-text-alt); font-size: 10px">
+            Beautiful gradient colors with smooth transitions
+          </p>
+        </div>
+
+        <div class="showcase-item">
+          <h3 style="color: var(--pixel-text); margin-bottom: 15px">
+            ✨ Animations
+          </h3>
+          <button class="demo-button" onclick="triggerCelebration()">
+            🎉 Celebrate
+          </button>
+          <button class="demo-button" onclick="addParticles()">
+            🌟 Particles
+          </button>
+          <p style="color: var(--pixel-text-alt); font-size: 10px">
+            Interactive animations and particle effects
+          </p>
+        </div>
+
+        <div class="showcase-item">
+          <h3 style="color: var(--pixel-text); margin-bottom: 15px">
+            📱 PWA Features
+          </h3>
+          <div style="font-size: 24px; margin: 15px 0">📱⚡🌐</div>
+          <p style="color: var(--pixel-text-alt); font-size: 10px">
+            Installable, offline-ready, responsive design
+          </p>
+        </div>
+
+        <div class="showcase-item">
+          <h3 style="color: var(--pixel-text); margin-bottom: 15px">
+            🎮 Game Features
+          </h3>
+          <div style="font-size: 24px; margin: 15px 0">🎯🏆🎊</div>
+          <p style="color: var(--pixel-text-alt); font-size: 10px">
+            Interactive gameplay with score tracking
+          </p>
+        </div>
+      </div>
+
+      <div class="navigation-links">
+        <a href="home.html" class="nav-link">🏠 Home</a>
+        <a href="index.html" class="nav-link">🎮 Play Game</a>
+        <a href="#" class="nav-link" onclick="showTechnologies()"
+          >🛠️ Tech Stack</a
+        >
+      </div>
+
+      <div
+        id="tech-info"
+        style="
+          display: none;
+          margin-top: 20px;
+          padding: 20px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 15px;
+        "
+      >
+        <h3
+          style="
+            color: var(--pixel-text);
+            text-align: center;
+            margin-bottom: 15px;
+          "
+        >
+          🛠️ Technologies Used
+        </h3>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            text-align: center;
+            font-size: 10px;
+            color: var(--pixel-text-alt);
+          "
+        >
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">📱</div>
+            <div>Progressive Web App</div>
+          </div>
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">🎨</div>
+            <div>CSS3 + Animations</div>
+          </div>
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">⚡</div>
+            <div>JavaScript ES6+</div>
+          </div>
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">📐</div>
+            <div>Responsive Design</div>
+          </div>
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">🎮</div>
+            <div>Interactive Gaming</div>
+          </div>
+          <div>
+            <div style="font-size: 20px; margin-bottom: 5px">🌈</div>
+            <div>Modern UI/UX</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="game-footer" style="margin-top: 30px">
+        <div class="footer-text">
+          🎨 REDESIGNED WITH LOVE • 🌈 COLORFUL & CHEERFUL • ✨ MODERN PWA
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Create colorful particles
+      function createParticles() {
+        const pixelBg = document.querySelector(".pixel-bg");
+        const colors = ["#ff6b9d", "#4ecdc4", "#ffe66d", "#95e1d3", "#f093fb"];
+        const shapes = [
+          "🌟",
+          "✨",
+          "🎈",
+          "🎊",
+          "🌈",
+          "💫",
+          "🎭",
+          "🎪",
+          "🎨",
+          "🎯",
+        ];
+
+        for (let i = 0; i < 25; i++) {
+          const particle = document.createElement("div");
+
+          if (Math.random() > 0.6) {
+            particle.innerHTML =
+              shapes[Math.floor(Math.random() * shapes.length)];
+            particle.className = "pixel-particle emoji-particle";
+            particle.style.fontSize = 8 + Math.random() * 8 + "px";
+          } else {
+            particle.className = "pixel-particle";
+            particle.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+          }
+
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 4 + "s";
+          particle.style.animationDuration = 4 + Math.random() * 3 + "s";
+          pixelBg.appendChild(particle);
+        }
+      }
+
+      function triggerCelebration() {
+        const container = document.querySelector(".preview-container");
+        container.classList.add("celebrate");
+        setTimeout(() => container.classList.remove("celebrate"), 800);
+
+        // Add some temporary celebration particles
+        for (let i = 0; i < 10; i++) {
+          const celebration = document.createElement("div");
+          celebration.innerHTML = ["🎉", "🎊", "✨", "🌟", "🎈"][
+            Math.floor(Math.random() * 5)
+          ];
+          celebration.style.position = "fixed";
+          celebration.style.left = Math.random() * window.innerWidth + "px";
+          celebration.style.top = Math.random() * window.innerHeight + "px";
+          celebration.style.fontSize = "20px";
+          celebration.style.zIndex = "1000";
+          celebration.style.pointerEvents = "none";
+          celebration.style.animation = "celebrate 1s ease-out forwards";
+          document.body.appendChild(celebration);
+
+          setTimeout(() => celebration.remove(), 1000);
+        }
+      }
+
+      function addParticles() {
+        const pixelBg = document.querySelector(".pixel-bg");
+        const shapes = ["⭐", "💫", "✨", "🌟"];
+
+        for (let i = 0; i < 5; i++) {
+          const particle = document.createElement("div");
+          particle.innerHTML =
+            shapes[Math.floor(Math.random() * shapes.length)];
+          particle.className = "pixel-particle emoji-particle";
+          particle.style.fontSize = "16px";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDuration = "2s";
+          pixelBg.appendChild(particle);
+
+          setTimeout(() => particle.remove(), 2000);
+        }
+      }
+
+      function showTechnologies() {
+        const techInfo = document.getElementById("tech-info");
+        if (techInfo.style.display === "none") {
+          techInfo.style.display = "block";
+          techInfo.style.animation = "fadeIn 0.5s ease";
+        } else {
+          techInfo.style.display = "none";
+        }
+      }
+
+      // Add fade in animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", createParticles);
+    </script>
+  </body>
+</html>
