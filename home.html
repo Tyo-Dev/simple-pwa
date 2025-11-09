@@ -1,22 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home </title>
-</head>
-<body>
-    <div class="header">
-        <h1>Welcome to the Simple PWA </h1>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏠 Home - Simple PWA 🌈</title>
+
+    <!-- Link to the same CSS for consistent styling -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Preload font untuk konsistensi -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Additional styles for home page */
+      .home-container {
+        max-width: min(90vw, 600px);
+        width: 100%;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 100%
+        );
+        backdrop-filter: blur(20px);
+        border: 3px solid var(--pixel-border);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(255, 107, 157, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        padding: clamp(20px, 5vw, 40px);
+        margin: auto;
+        position: relative;
+        animation: containerGlow 3s ease-in-out infinite alternate,
+          containerFloat 6s ease-in-out infinite;
+      }
+
+      .home-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .home-title {
+        font-size: clamp(16px, 5vw, 28px);
+        background: var(--pixel-rainbow);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+        letter-spacing: 2px;
+        animation: rainbowText 4s linear infinite,
+          titleBounce 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleBounce {
+        0% {
+          transform: translateY(0px);
+        }
+        100% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .feature-card {
+        background: linear-gradient(
+          145deg,
+          rgba(78, 205, 196, 0.1) 0%,
+          rgba(255, 107, 157, 0.1) 100%
+        );
+        backdrop-filter: blur(15px);
+        border: 2px solid var(--pixel-accent2);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: cardFloat 3s ease-in-out infinite alternate;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+      }
+
+      .feature-emoji {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        display: block;
+        animation: emojiSpin 4s ease-in-out infinite;
+      }
+
+      @keyframes emojiSpin {
+        0%,
+        100% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(10deg) scale(1.1);
+        }
+      }
+
+      .feature-title {
+        font-size: clamp(10px, 2.5vw, 14px);
+        color: var(--pixel-text);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .feature-desc {
+        font-size: clamp(8px, 2vw, 10px);
+        color: var(--pixel-text-alt);
+        opacity: 0.8;
+        line-height: 1.5;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .home-btn {
+        padding: 12px 24px;
+        border: 2px solid var(--pixel-border);
+        border-radius: 25px;
+        font-family: var(--pixel-font);
+        font-size: clamp(8px, 2vw, 10px);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          45deg,
+          var(--pixel-primary),
+          var(--pixel-secondary)
+        );
+        color: white;
+        border-color: var(--pixel-primary);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(
+          45deg,
+          var(--pixel-accent),
+          var(--pixel-accent2)
+        );
+        color: var(--pixel-bg-dark);
+        border-color: var(--pixel-accent);
+      }
+
+      .home-btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+      }
+
+      @keyframes cardFloat {
+        0% {
+          transform: translateY(0px);
+        }
+        100% {
+          transform: translateY(-3px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background particles -->
+    <div class="pixel-bg"></div>
+
+    <div class="home-container">
+      <header class="home-header">
+        <h1 class="home-title">🌈 WELCOME TO SIMPLE PWA 🚀</h1>
+        <div class="pixel-divider"></div>
+        <p class="subtitle">
+          ✨ MODERN • 🎮 INTERACTIVE • 🌟 AMAZING EXPERIENCE
+        </p>
+      </header>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-emoji">🎮</span>
+          <h3 class="feature-title">Interactive Game</h3>
+          <p class="feature-desc">
+            Play our colorful Pixel Tic Tac Toe with stunning animations and
+            smooth gameplay!
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-emoji">⚡</span>
+          <h3 class="feature-title">Lightning Fast</h3>
+          <p class="feature-desc">
+            Super fast loading times and responsive design for the best user
+            experience.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-emoji">📱</span>
+          <h3 class="feature-title">PWA Ready</h3>
+          <p class="feature-desc">
+            Install on your device and enjoy offline functionality with full PWA
+            features.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-emoji">🌈</span>
+          <h3 class="feature-title">Colorful Design</h3>
+          <p class="feature-desc">
+            Beautiful gradients, animations, and modern UI that's pleasing to
+            the eye.
+          </p>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <a href="index.html" class="home-btn btn-primary"> 🎮 PLAY GAME </a>
+        <a href="#" class="home-btn btn-secondary" onclick="installPWA()">
+          📱 INSTALL PWA
+        </a>
+      </div>
+
+      <footer class="game-footer" style="margin-top: 30px">
+        <div class="footer-text">
+          BUILT WITH 💖 • 🌈 MODERN DESIGN • ✨ PROGRESSIVE WEB APP
+        </div>
+      </footer>
     </div>
-   <div class="description">
-        <p>This is the home page of the Simple Progressive Web Application (PWA).</p>
-        <p>Explore the features and functionalities of this PWA.</p>
-        <p>Enjoy a seamless and engaging user experience.</p>
-    </div>
-    <div class="hallo1">
-        ayolaah sudah capek ayooo
-    </div>
-    
-</body>
+
+    <script>
+      // Create background particles
+      function createParticles() {
+        const bg = document.querySelector(".pixel-bg");
+        const colors = ["#ff6b9d", "#4ecdc4", "#ffe66d", "#95e1d3", "#f093fb"];
+
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement("div");
+          particle.className = "pixel-particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 3 + "s";
+          particle.style.animationDuration = Math.random() * 3 + 2 + "s";
+          particle.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          bg.appendChild(particle);
+        }
+      }
+
+      // PWA Installation
+      let deferredPrompt;
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+      });
+
+      function installPWA() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+              console.log("User accepted the install prompt");
+            }
+            deferredPrompt = null;
+          });
+        } else {
+          alert(
+            "🎉 PWA sudah terinstall atau browser tidak mendukung instalasi PWA!"
+          );
+        }
+      }
+
+      // Initialize particles when page loads
+      document.addEventListener("DOMContentLoaded", createParticles);
+    </script>
+  </body>
 </html>
